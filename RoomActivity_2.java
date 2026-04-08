@@ -6,6 +6,9 @@ public class RoomActivity_2 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+
+		//idk what we were doing here :(
+
 int students = 3;
 int subjects = 3;
 
