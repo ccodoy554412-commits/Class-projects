@@ -1,4 +1,4 @@
-package activities;
+package cCe103;
 
 import java.util.Scanner;
 
