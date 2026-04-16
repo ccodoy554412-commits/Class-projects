@@ -46,6 +46,7 @@ public class GuiReserve {
                     }
                     JOptionPane.showMessageDialog(null, roomDisplay.toString(), "Room Status", JOptionPane.INFORMATION_MESSAGE);
                     break;
+
                 case 2:
                     // Check In
                     String floorStr = JOptionPane.showInputDialog(null, "Enter floor (1-7):", "Check In", JOptionPane.QUESTION_MESSAGE);
@@ -76,6 +77,7 @@ public class GuiReserve {
                         JOptionPane.showMessageDialog(null, "Invalid input! Please enter numbers only.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                     break;
+
                 case 3:
                     // Check Out
                     floorStr = JOptionPane.showInputDialog(null, "Enter floor (1-7):", "Check Out", JOptionPane.QUESTION_MESSAGE);
