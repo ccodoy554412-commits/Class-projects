@@ -1,4 +1,4 @@
-package cCe103;
+package cce103;
 
 import javax.swing.*;
 

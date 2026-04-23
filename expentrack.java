@@ -1,9 +1,11 @@
+package cCe103;
+
 import java.io.*;
 import javax.swing.*;
 
 public class expentrack extends JFrame{
-    public static void main(String[] args) {
-     new expentrack();   
+    public static void main(String[]args) {
+     new expentrack(); 
     }
     expentrack(){
         setSize(390,355);

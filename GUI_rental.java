@@ -1,4 +1,4 @@
-package cCe103;
+package cce103;
 
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
