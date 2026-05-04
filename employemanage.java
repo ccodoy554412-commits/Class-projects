@@ -100,7 +100,12 @@ public class employemanage extends JFrame {
 
         //add button
         JButton add = new JButton("Add Employee");
-        add(add).setBounds(730,220,150,20);
+        add(add).setBounds(500,220,150,20);
+
+        //add a delete button
+        JButton del = new JButton("Delete");
+        add(del).setBounds(730,220,150,20);
+
 
 
         //Jtable
@@ -113,6 +118,29 @@ public class employemanage extends JFrame {
         JScrollPane sp = new JScrollPane(table);
         sp.setBounds(20,260,885,280);
         add(sp);
+
+        //mouse listener
+        table.addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                int row = table.getSelectedRow();
+                if(row != -1){
+                   employeid.setText(dmodel.getValueAt(row, 0).toString());
+                    fullnt.setText(dmodel.getValueAt(row, 1).toString());
+                    doftxt.setText(dmodel.getValueAt(row, 2).toString());
+                    agetxt.setText(dmodel.getValueAt(row, 3).toString());
+                    sivsdropd.setSelectedItem(dmodel.getValueAt(row, 4).toString());
+                    nationtxt.setText(dmodel.getValueAt(row, 5).toString());
+                    
+                    String gender = dmodel.getValueAt(row, 6).toString();
+                    if(gender.equals("Male")) m.setSelected(true); else f.setSelected(true);
+                    
+                    cntxt.setText(dmodel.getValueAt(row, 7).toString());
+                    contactxt.setText(dmodel.getValueAt(row, 8).toString());
+                    deptxt.setText(dmodel.getValueAt(row, 9).toString());
+                    jobtxt.setText(dmodel.getValueAt(row, 10).toString()); 
+                }
+            }
+        });
 
         //to load from start up
         loadFile(dmodel);
@@ -153,6 +181,21 @@ public class employemanage extends JFrame {
         }
     }); 
 
+    //trying to add delete button
+    del.addActionListener(e->{
+       int RowSelect = table.getSelectedRow();
+            if (RowSelect == -1) {
+                JOptionPane.showMessageDialog(null, "Select record to delete");
+                return;
+            }
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure?", "Confirm", JOptionPane.YES_NO_OPTION);
+            if (confirm != JOptionPane.YES_OPTION) return;
+
+            dmodel.removeRow(RowSelect); 
+            saveFile(dmodel);           
+            JOptionPane.showMessageDialog(null, "Record Deleted"); 
+    });
+
     }
     //save when closing
     private void saveFile(DefaultTableModel model) {
@@ -161,7 +204,7 @@ public class employemanage extends JFrame {
                 StringBuilder sb = new StringBuilder();
                 for (int j = 0; j < model.getColumnCount(); j++) {
                     sb.append(model.getValueAt(i, j));
-                    if (j < model.getColumnCount() - 1) sb.append("~"); // Using ~ as delimiter to avoid comma issues in names
+                    if (j < model.getColumnCount() - 1) sb.append("~"); 
                 }
                 writer.println(sb.toString());
             }
