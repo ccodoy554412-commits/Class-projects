@@ -100,13 +100,14 @@ public class employemanage extends JFrame {
 
         //add button
         JButton add = new JButton("Add Employee");
-        add(add).setBounds(500,220,150,20);
+        add(add).setBounds(280,220,150,20);
 
         //add a delete button
         JButton del = new JButton("Delete");
         add(del).setBounds(730,220,150,20);
 
-
+        JButton updt = new JButton("Update");
+        add(updt).setBounds(500, 220, 150, 20);
 
         //Jtable
         String[] colms = {"Employee","Full Name","Birth","Age","Civil Status","Nationality","Gender","Contact","Email","Department","Job Title/Position"};
@@ -194,6 +195,30 @@ public class employemanage extends JFrame {
             dmodel.removeRow(RowSelect); 
             saveFile(dmodel);           
             JOptionPane.showMessageDialog(null, "Record Deleted"); 
+    });
+
+    updt.addActionListener(e ->{
+        int selectRow = table.getSelectedRow();
+
+        if(selectRow == -1){
+            JOptionPane.showMessageDialog(null, "Select Record to update");
+            return;
+        }
+
+        dmodel.setValueAt(employeid.getText(), selectRow, 0);
+        dmodel.setValueAt(fullnt.getText(), selectRow, 1);
+        dmodel.setValueAt(doftxt.getText(), selectRow, 2);
+        dmodel.setValueAt(agetxt.getText(), selectRow, 3);
+        dmodel.setValueAt(sivsdropd.getSelectedItem(), selectRow, 4);
+        dmodel.setValueAt(nationtxt.getText(), selectRow, 5);
+        dmodel.setValueAt(m.isSelected() ? "Male" : "Female", selectRow, 6);
+        dmodel.setValueAt(cntxt.getText(), selectRow, 7);
+        dmodel.setValueAt(contactxt.getText(), selectRow, 8);
+        dmodel.setValueAt(deptxt.getText(), selectRow, 9);
+        dmodel.setValueAt(jobtxt.getText(), selectRow, 10);
+
+        saveFile(dmodel);
+        JOptionPane.showMessageDialog(null, "Record Updated");
     });
 
     }
