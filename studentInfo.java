@@ -88,7 +88,26 @@ public class studentInfo extends JFrame {
        });
 
        updt.addActionListener(e->{
-        
+        int selectedRow = jt.getSelectedRow();
+    if (selectedRow == -1) return;
+
+    ArrayList<String> lines = new ArrayList<>();
+    try (BufferedReader br = new BufferedReader(new FileReader("StudentInfo.txt"))) {
+        String line;
+        int rowdex = 0;
+        while ((line = br.readLine()) != null) {
+            if (rowdex == selectedRow) {
+                
+                lines.add(nametxt.getText() + "*" + cortxt.getText() + "*" + sectxt.getText());
+            } else {
+                lines.add(line);
+            }
+            rowdex++;
+        }
+    } catch (Exception z) { z.printStackTrace(); }
+    saveToFile(lines); 
+    read();
+    clear();
        });
 
        del.addActionListener(e->{
