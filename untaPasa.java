@@ -1,10 +1,9 @@
-package codoy;
+package cce103;
 
+import java.io.*;
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.table.*;
-import java.awt.*;
-import java.io.*;
 
 public class untaPasa extends JFrame {
 	static DefaultTableModel dtm;
