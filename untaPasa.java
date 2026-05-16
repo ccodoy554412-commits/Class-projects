@@ -1,5 +1,6 @@
 package cce103;
 
+import java.awt.event.MouseEvent;
 import java.io.*;
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
@@ -65,9 +66,9 @@ public class untaPasa extends JFrame {
 		add(jsp).setBounds(250,30,510,420);
 
 		table.addMouseListener(new MouseInputAdapter() {
-			public void mouseClicked() {
+			public void mouseClicked(MouseEvent e) {
 				int row = table.getSelectedRow();
-				if(row == -1) {
+				if(row != -1) {
 					nametxt.setText(dtm.getValueAt(row, 0).toString());
 					deptxt.setText(dtm.getValueAt(row, 1).toString());
 					yltxt.setText(dtm.getValueAt(row, 2).toString());
